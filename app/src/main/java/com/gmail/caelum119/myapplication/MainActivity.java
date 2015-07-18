@@ -1,5 +1,6 @@
 package com.gmail.caelum119.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,18 @@ import android.widget.TextView;
 public class MainActivity extends ActionBarActivity
 {
 
+    public TextView textView1;
+    public void testFunction(View v){
+
+        Button button = (Button) v;
+
+        textView1.setText("Button was pressed");
+
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra("testExtraKey", "Test");
+        startActivity(intent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -23,6 +36,17 @@ public class MainActivity extends ActionBarActivity
         final TextView textView = (TextView) findViewById(R.id.textView);
         final Button button = (Button) findViewById(R.id.button);
         final EditText textInput = (EditText) findViewById(R.id.editText);
+        textView1 = (TextView) findViewById(R.id.textView1);
+
+        final Button button1 = (Button) findViewById(R.id.button2);
+//        button1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                textView1.setText("Button 2 pressed");
+//            }
+//        });
+        textView1.setText("Test");
         button.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -33,6 +57,8 @@ public class MainActivity extends ActionBarActivity
 
             }
         });
+
+
 
 
     }
